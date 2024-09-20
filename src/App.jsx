@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+import ThreadList from './ThreadList';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import NewThread from './NewThread';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [threads, setThreads] = useState([]);
+
+  // スレッド一覧を取得する関数
+  const fetchThreads = async () => {
+    const response = await fetch('https://railway.bulletinboard.techtrain.dev/threads?offset=0');
+    const data = await response.json();
+    setThreads(data);
+  };
+
+  useEffect(() => {
+    fetchThreads(); // 初期読み込みでスレッド一覧を取得
+  }, []);
 
   return (
-    <>
+    <Router>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <header>
+          <h1>掲示板</h1>
+          <nav>
+            <Link to="/">ホーム</Link>
+            <Link to="/threads/new">新規スレッド作成</Link>
+          </nav>
+        </header>
+        <div className="main-content">
+          <Routes>
+            <Route
+              path="/"
+              element={<ThreadList threads={threads} fetchThreads={fetchThreads} />}
+            />
+            <Route
+              path="/threads/new"
+              element={<NewThread fetchThreads={fetchThreads} />}
+            />
+          </Routes>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on theVite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
