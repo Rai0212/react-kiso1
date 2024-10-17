@@ -27,7 +27,7 @@ function NewThread({ fetchThreads }) { // App.jsxからfetchThreadsを受け取�
 
   return (
     <div className="new-thread">
-      <h2>スレッドを新規作成</h2>
+      <h3>スレッドを新規作成</h3>
       <form className="new-thread-form" onSubmit={handleSubmit}> {/* onSubmit = このフォームが送信されたとき = 作成ボタン を押したとき，handliSubmit関数を呼び出し */}
         <input
           type="text"
