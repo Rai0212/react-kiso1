@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import './App.css'; // CSSは分けるとよい！
 import ThreadList from './ThreadList';
 import React from 'react';
 import NewThread from './NewThread';
@@ -22,33 +22,31 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <header>
-          <h1>掲示板</h1>
-          <nav>
-            <Link to="/">ホーム</Link>
-            <Link to="/threads/new">新規スレッド作成</Link>
-          </nav>
-        </header>
-        <div className="main-content">
-          <Routes>
-            <Route
-              path="/"
-              /* ルートが / の時，ThreadListのコンポーネントを表示，threadsを渡す */
-              element={<ThreadList threads={threads} />}
-            />
-            <Route
-              path="/threads/new"
-              /* ルートが /threads/new の時，NewThreadのコンポーネントを表示，スレッドを作った後に一覧を再取得するために，fetchThreadsを渡す */
-              element={<NewThread fetchThreads={fetchThreads} />}
-            />
-            <Route
-              path="/threads/:thread_id"
-              /* ルートが /threads/そのthreadのid の時，PostListのコンポーネントを表示 */
-              element={<PostList />}
-            />
-          </Routes>
-        </div>
+      <header>
+        <h1>掲示板</h1>
+        <nav>
+          <Link to="/">ホーム</Link>
+          <Link to="/threads/new">新規スレッド作成</Link>
+        </nav>
+      </header>
+      <div className="main-content">
+        <Routes>
+          <Route
+            path="/"
+            /* ルートが / の時，ThreadListのコンポーネントを表示，threadsを渡す */
+            element={<ThreadList threads={threads} />}
+          />
+          <Route
+            path="/threads/new"
+            /* ルートが /threads/new の時，NewThreadのコンポーネントを表示，スレッドを作った後に一覧を再取得するために，fetchThreadsを渡す */
+            element={<NewThread fetchThreads={fetchThreads} />}
+          />
+          <Route
+            path="/threads/:thread_id"
+            /* ルートが /threads/そのthreadのid の時，PostListのコンポーネントを表示 */
+            element={<PostList />}
+          />
+        </Routes>
       </div>
     </Router>
   );

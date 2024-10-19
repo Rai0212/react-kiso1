@@ -69,7 +69,7 @@ function PostList() {
             posts.map((post) => {
               return (
               <li key={post.id}>
-                {post.post} {/* コメントを表示 */}
+                <p>{post.post}</p> {/* コメントを表示 */}
               </li>
             );
           })

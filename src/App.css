@@ -1,3 +1,7 @@
+/* 今回みたいにファイルが複数ある時は，CSSも分けた方が見やすい！！ 
+今度からは，そうしましょう！！ */
+/* あとは開発者ツールが使い方！さすがに便利すぎる．．．，先人たちに感謝！ */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -11,6 +15,11 @@ body, html {
   word-break: keep-all; /* 画面を狭めた時に，文章を改行しないように */
 }
 
+/* 開発者ツールを見て，直した！！ */
+div#root {
+  width: 100%;
+}
+
 header {
   display: flex;
   justify-content: space-between; /* タイトルとナビゲーションを左右に配置 */
@@ -19,10 +28,10 @@ header {
   padding: 10px;
   height: 50px;
   background-color: rgb(71, 130, 76);
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 h1 {
@@ -54,10 +63,10 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; /* 必要に応じて調整 */
-  padding: 30px;
+  /* padding: 30px; こいつのせいでずれていた */
   margin: 0 auto;
-  overflow-y: auto; /* 縦スクロールを許可 */
-  width: 100%;
+  /* overflow-y: auto; /* 縦スクロールを許可 */
+  /* width: 100%; */
 }
 
 ul {
@@ -97,18 +106,6 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
-}
-
-.new-thread {
-  margin-top: 30px; /* ヘッダーに被っていたので，調整！*/
-}
-
-.thread-list {
-  margin-top: 30px; /* ヘッダーに近すぎたので，調整！*/
-}
-
-.comment-list {
-  margin-top: 30px; /* ヘッダーに被っていたので，調整！*/
 }
 
 /* スレッド作成フォームのスタイル */

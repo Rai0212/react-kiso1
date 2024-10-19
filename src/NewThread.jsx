@@ -10,7 +10,7 @@ function NewThread({ fetchThreads }) { // App.jsxからfetchThreadsを受け取�
 
     // 新しいスレッドを作成するためのAPIリクエスト(参考資料：https://zenn.dev/haru330/articles/859d6a7982d06d)
     const response = await fetch('https://railway.bulletinboard.techtrain.dev/threads', {
-      method: 'POST', // 新規に作成したスレッドをサーバーに送信する
+      method: 'POST', // 新規に作成したスレッドをサーバーに送信
       headers: {
         'Content-Type': 'application/json', // 送信するデータがJSON形式であることを表している
       },
