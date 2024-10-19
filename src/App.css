@@ -12,10 +12,11 @@ body, html {
   flex-direction: column;
   text-align: center;
   overflow-x: hidden; /* 画面全体の横スクロールを禁止 */
-  word-break: keep-all; /* 画面を狭めた時に，文章を改行しないように */
+  /* word-break: keep-all; /* 画面を狭めた時に，文章を改行しないように */
 }
 
-/* 開発者ツールを見て，直した！！ */
+/* 開発者ツールを見て，直した！！ 
+これで，ヘッダーが端まで表示できた！ */
 div#root {
   width: 100%;
 }
@@ -28,6 +29,7 @@ header {
   padding: 10px;
   height: 50px;
   background-color: rgb(71, 130, 76);
+  white-space: nowrap;
   /* position: fixed;
   top: 0;
   left: 0;
@@ -65,7 +67,7 @@ h3 {
   justify-content: flex-start; /* 必要に応じて調整 */
   /* padding: 30px; こいつのせいでずれていた */
   margin: 0 auto;
-  /* overflow-y: auto; /* 縦スクロールを許可 */
+  overflow-y: auto; /* 縦スクロールを許可 */
   /* width: 100%; */
 }
 
@@ -81,10 +83,9 @@ li {
   padding-left: 10px;
   border: 1px solid #ccc; /* 四角の枠線を追加 */
   border-radius: 4px; /* 角を丸くする */
-  width: 600px; /* 必要に応じて設定 */
   min-height: 2.5rem;
   height: auto;
-  max-width: 600px; /* 最大幅を設定（必要に応じて調整） */
+  max-width: 1000px; /* 最大幅を設定（必要に応じて調整） */
   background-color: white; /* 背景色を白に設定 */
 }
 
@@ -115,7 +116,7 @@ nav a:hover {
   align-items: center;
   border: 2px solid #4CAF50; /* 緑の枠線 */
   border-radius: 8px; /* 角を丸く */
-  padding: 20px; /* 内側の余白 */
+  padding: 50px; /* 内側の余白 */
   background-color: #f9f9f9; /* 明るい背景色 */
   margin: 20px; /* 外側の余白 */
 }
@@ -125,7 +126,7 @@ nav a:hover {
   width: 25rem; /* 幅を100%に */
   height: 2.5rem; /* 高さを大きくする */
   font-size: 1.2rem; /* フォントサイズを大きくする */
-  padding: 10px; /* 内側に余白を追加 */
+  padding: 15px; /* 内側に余白を追加 */
   border: 1px solid #ccc; /* 枠線のスタイル */
   border-radius: 4px; /* 角を少し丸くする */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加 */
@@ -153,6 +154,7 @@ nav a:hover {
   flex-direction: column;
   align-items: center; /* 中央揃え */
   margin-top: 20px; /* 上の余白 */
+  margin-bottom: 20px; /* ボタンが画面の一番下にあると見にくいので */
 }
 
 .comment-form textarea {
